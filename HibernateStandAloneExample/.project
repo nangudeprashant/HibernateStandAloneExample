@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>HibernateStandAloneExample</name>
+	<name>HibernateStandAloneWithHQLAndCriteria</name>
 	<comment></comment>
 	<projects>
 	</projects>

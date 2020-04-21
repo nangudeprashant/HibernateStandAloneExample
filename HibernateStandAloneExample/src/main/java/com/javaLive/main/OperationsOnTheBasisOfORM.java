@@ -9,14 +9,14 @@ import org.slf4j.LoggerFactory;
 import com.javaLive.databaseUtil.*;
 import com.javaLive.entity.Student;
 
-public class App {
+public class OperationsOnTheBasisOfORM {
     public static void main(String[] args) {
-    	final Logger logger = LoggerFactory.getLogger(App.class);
+    	final Logger logger = LoggerFactory.getLogger(OperationsOnTheBasisOfORM.class);
     	Student student1 = new Student(73,"Name73", "Address73");
         Student student2 = new Student(74,"Name74", "Address74");
         Transaction transaction = null;
         System.out.println("Table contents before starting any operation:");
-        new App().getStudentList();
+        new OperationsOnTheBasisOfORM().getStudentList();
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             // start a transaction
             transaction = session.beginTransaction();
@@ -28,7 +28,7 @@ public class App {
             transaction.commit();
             System.out.println("Displaying student list after inserting new entires");
             logger.info("Displaying student list after inserting new entires");
-            new App().getStudentList();
+            new OperationsOnTheBasisOfORM().getStudentList();
             // update the student objects
             student1.setAddress("NewName73");
             student1.setName("NewName73");
@@ -41,7 +41,7 @@ public class App {
             // commit transaction
             transaction.commit();
             System.out.println("Displaying student list after updating the entires");
-            new App().getStudentList();
+            new OperationsOnTheBasisOfORM().getStudentList();
             // delete the student objects
             transaction = session.beginTransaction();
             System.out.println("\n\n");
@@ -50,7 +50,7 @@ public class App {
             // commit transaction
             transaction.commit();
             System.out.println("Displaying student list after deleting the entires");
-            new App().getStudentList();
+            new OperationsOnTheBasisOfORM().getStudentList();
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
