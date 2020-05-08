@@ -57,6 +57,9 @@ public class OperationsOnTheBasisOfORM {
             }
             e.printStackTrace();
         }
+        finally {
+        	HibernateUtil.shutdown();//Closing all open resources.
+        }
     }
     public void getStudentList() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -67,5 +70,10 @@ public class OperationsOnTheBasisOfORM {
         } catch (Exception e) {
            e.printStackTrace();
         }
+        /*finally {
+        	HibernateUtil.shutdown();
+        }*/
     }
+    
+    
 }
